@@ -1,0 +1,33 @@
+﻿@using System.Data
+    @model System.Data.DataTable
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>Eno</th>
+                    <th>Ename</th>
+                    <th>Job</th>
+                    <th>Salary</th>
+                    <th>Dname</th>
+                </tr>
+                @foreach(DataRow row in Model.Rows)
+                {
+                    <tr>
+                        @foreach (var item in row.ItemArray)
+                        {
+                            <td>@item</td>
+                        }
+                    </tr>
+                }
+            </table>
+        </div>
+    </body>
+    </html>

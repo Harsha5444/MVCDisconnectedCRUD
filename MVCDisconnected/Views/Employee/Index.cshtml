@@ -1,0 +1,70 @@
+﻿@model List<MVCDisconnected.Models.Employee>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    @if (TempData["success"] != null)
+    {
+        <script>
+                alert('@TempData["success"]');
+        </script>
+    }
+    @if (TempData["updatesuccess"] != null)
+    {
+        <script>
+            alert('@TempData["updatesuccess"]');
+        </script>
+    }
+    @if (TempData["deletesuccess"] != null)
+    {
+        <script>
+            alert('@TempData["deletesuccess"]');
+        </script>
+    }
+    @if (TempData["deletefailed"] != null)
+    {
+        <script>
+            alert('@TempData["deletefailed"]');
+        </script>
+    }
+    <h1 class="text-center text-primary my-4 display-4">ASP.NET MVC Application</h1>
+    <hr />
+    <h3 class="text-muted text-center mb-4">
+        This project is an ASP.NET MVC application
+        that uses a disconnected approach to perform CRUD operations on a single table
+        (Employee) in  SQL Server database.
+    </h3>
+    <div class="container">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Eno</th>
+                <th>Ename</th>
+                <th>Job</th>
+                <th>Salary</th>
+                <th>Dname</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Eno</td>
+                    <td>@item.Ename</td>
+                    <td>@item.Job</td>
+                    <td>@item.Salary</td>
+                    <td>@item.Dname</td>
+                    <td>
+                        <a href="/Employee/Details/@item.Eno" class="btn btn-info">Details</a>
+                        <a href="/Employee/Edit/@item.Eno" class="btn btn-warning">Edit</a>
+                        <a href="/Employee/Delete/@item.Eno" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <a href="/Employee/Add" class="btn btn-primary">Add New Employee</a>
+    </div>
+</body>
+</html>

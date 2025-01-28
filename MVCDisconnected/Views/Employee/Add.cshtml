@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    @if (TempData["failed"] != null)
+    {
+        <script>
+                alert('@TempData["failed"]');
+        </script>
+    }
+    <div class="container">
+        <form action="" method="post">
+            <div class="mb-3">
+                <label for="eno" class="form-label">Enter Eno:</label>
+                <input type="text" name="Eno" class="form-control" id="eno">
+            </div>
+            <div class="mb-3">
+                <label for="ename" class="form-label">Enter Ename:</label>
+                <input type="text" name="Ename" class="form-control" id="ename">
+            </div>
+            <div class="mb-3">
+                <label for="job" class="form-label">Enter Job:</label>
+                <input type="text" name="Job" class="form-control" id="job">
+            </div>
+            <div class="mb-3">
+                <label for="salary" class="form-label">Enter Salary:</label>
+                <input type="text" name="Salary" class="form-control" id="salary">
+            </div>
+            <div class="mb-3">
+                <label for="dname" class="form-label">Enter Dname:</label>
+                <input type="text" name="Dname" class="form-control" id="dname">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/Employee/Index" class="btn btn-secondary">Go Back</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿@model MVCDisconnected.Models.Employee
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Employee Details</h2>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Employee @Model.Eno</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Name:</dt>
+                    <dd class="col-sm-9">@Model.Ename</dd>
+
+                    <dt class="col-sm-3">Job:</dt>
+                    <dd class="col-sm-9">@Model.Job</dd>
+
+                    <dt class="col-sm-3">Salary:</dt>
+                    <dd class="col-sm-9">@Model.Salary</dd>
+
+                    <dt class="col-sm-3">Department:</dt>
+                    <dd class="col-sm-9">@Model.Dname</dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <div class="text-right">
+                    <a href="/Employee/Index" class="btn btn-secondary">Go Back</a>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
