@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Data;
 using System.Collections.Generic;
-using System.Linq;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace MVCDisconnected.Models
 {
@@ -20,13 +20,13 @@ namespace MVCDisconnected.Models
             DataTable datatable = new DataTable();
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-                using(SqlDataAdapter da = new SqlDataAdapter("select * from employee", con))
+                using (SqlDataAdapter da = new SqlDataAdapter("select * from employee", con))
                 {
                     try
                     {
                         da.Fill(datatable);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         throw ex;
                     }
@@ -37,7 +37,7 @@ namespace MVCDisconnected.Models
         public List<Employee> GetEmployeesList()
         {
             List<Employee> emps = new List<Employee>();
-            foreach(DataRow row in dt.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 emps.Add(new Employee
                 {
@@ -45,7 +45,7 @@ namespace MVCDisconnected.Models
                     Ename = Convert.ToString(row["Ename"]),
                     Job = Convert.ToString(row["Job"]),
                     Salary = Convert.ToDecimal(row["Salary"]),
-                    Dname = Convert.ToString(row["Dname"])                    
+                    Dname = Convert.ToString(row["Dname"])
                 });
             }
             return emps;
@@ -80,10 +80,16 @@ namespace MVCDisconnected.Models
         {
             int eno = emp.Eno;
             DataRow row = dt.Select($"Eno = {eno}").FirstOrDefault();
+            if (row["Ename"].ToString() == emp.Ename && row["Job"].ToString() == emp.Job && Convert.ToDecimal(row["Salary"]) == emp.Salary && row["Dname"].ToString() == emp.Dname)
+            {
+                return true;
+            }
+                
             row["Ename"] = emp.Ename;
             row["Job"] = emp.Job;
             row["Salary"] = emp.Salary;
             row["Dname"] = emp.Dname;
+           
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 using (SqlDataAdapter da = new SqlDataAdapter("select * from employee", con))
