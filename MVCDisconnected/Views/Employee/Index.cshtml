@@ -7,10 +7,10 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    @if (TempData["success"] != null)
+    @if (TempData["addsuccess"] != null)
     {
         <script>
-                alert('@TempData["success"]');
+                alert('@TempData["addsuccess"]');
         </script>
     }
     @if (TempData["updatesuccess"] != null)

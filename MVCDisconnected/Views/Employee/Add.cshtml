@@ -6,10 +6,10 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    @if (TempData["failed"] != null)
+    @if (TempData["addfailed"] != null)
     {
         <script>
-                alert('@TempData["failed"]');
+                alert('@TempData["addfailed"]');
         </script>
     }
     <div class="container">
